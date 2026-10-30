@@ -107,6 +107,29 @@ h1, h2, h3, p { margin-top: 0; }
 .project-features li::before { content: ""; position: absolute; top: 6px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #91b856; }
 .project-footer { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid #deded5; }
 .project-index { color: #a0a294; font: 500 9px var(--font-mono); }
+.project-carousel { margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0ede5; }
+.carousel-container { position: relative; height: 220px; overflow: hidden; border-radius: 3px; }
+.carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .4s ease-in-out; }
+.carousel-slide.active { opacity: 1; }
+.mockup-dashboard { width: 100%; height: 100%; display: flex; flex-direction: column; padding: 16px; color: rgba(255,255,255,0.95); font-size: 11px; }
+.mockup-header { margin-bottom: 14px; }
+.mockup-element { border-radius: 2px; }
+.mockup-content { flex: 1; display: flex; flex-direction: column; justify-content: space-around; }
+.mockup-stat { text-align: center; padding: 8px 0; }
+.mockup-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
+.mockup-value { font-size: 18px; font-weight: 600; }
+.mockup-item { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.15); font-size: 10px; }
+.mockup-item:last-child { border-bottom: none; }
+.mockup-kanban { display: flex; gap: 8px; height: 100%; }
+.kanban-col { flex: 1; background: rgba(255,255,255,0.1); border-radius: 2px; padding: 8px; display: flex; flex-direction: column; }
+.kanban-label { font-size: 9px; font-weight: 600; margin-bottom: 6px; opacity: 0.9; }
+.kanban-card { background: rgba(255,255,255,0.2); padding: 6px 8px; border-radius: 2px; margin-bottom: 4px; font-size: 9px; }
+.mockup-chart { display: flex; align-items: flex-end; justify-content: space-around; height: 80%; gap: 6px; }
+.chart-bar { width: 20%; background: rgba(255,255,255,0.5); border-radius: 2px 2px 0 0; }
+.carousel-nav { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: #d4d0c5; cursor: pointer; transition: background .3s ease; padding: 0; }
+.carousel-dot:hover { background: #b8b4a7; }
+.carousel-dot.active { background: var(--ink); }
 .contact { background: var(--ink); color: #f7f7ef; }
 .contact-inner { padding-block: 76px 25px; }
 .contact .section-label { color: #a3a99b; }
@@ -126,6 +149,19 @@ h1, h2, h3, p { margin-top: 0; }
 .site-footer > span, .site-footer > a:last-child { color: #81847b; font-size: 8px; }
 .site-footer > a:last-child { transition: color .2s; }
 .site-footer > a:last-child:hover { color: var(--ink); }
+
+.ui-showcase { background: #f9f8f3; width: 100%; padding-inline: max(48px, calc((100% - 1200px) / 2)); }
+.ui-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+.ui-card { display: flex; flex-direction: column; border: 1px solid #e8e7dd; background: #fff; border-radius: 4px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.ui-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px #1d211e0a; }
+.ui-card-preview { position: relative; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.ui-preview-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #fff; text-align: center; }
+.ui-preview-placeholder svg { width: 48px; height: 48px; opacity: 0.9; }
+.ui-preview-placeholder span { font: 500 11px var(--font-mono); letter-spacing: .08em; opacity: 0.85; }
+.ui-card-content { display: flex; flex-direction: column; flex-grow: 1; padding: 22px; }
+.ui-card-content h3 { margin: 0 0 8px; font: 650 18px/1.2 var(--font-display); letter-spacing: -.04em; }
+.ui-card-content > p { margin: 0 0 15px; color: #777a72; font-size: 12px; line-height: 1.7; flex-grow: 1; }
+.ui-card-content .tag-list { margin-top: auto; }
 
 @keyframes blink { 50% { opacity: 0; } }
 @media (max-width: 900px) {
@@ -147,6 +183,17 @@ h1, h2, h3, p { margin-top: 0; }
   .project-card { padding: 19px; }
   .project-card h3 { font-size: 19px; }
   .project-features { gap: 8px; }
+  .project-carousel { margin-top: 18px; padding-top: 16px; }
+  .carousel-container { height: 190px; }
+  .mockup-dashboard { padding: 12px; font-size: 10px; }
+  .mockup-value { font-size: 16px; }
+  .mockup-stat { padding: 6px 0; }
+  .ui-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 40px; }
+  .ui-card-preview { height: 160px; }
+  .ui-preview-placeholder svg { width: 40px; height: 40px; }
+  .ui-card-content { padding: 18px; }
+  .ui-card-content h3 { font-size: 16px; }
+  .ui-card-content > p { font-size: 11px; }
 }
 @media (max-width: 640px) {
   html { scroll-padding-top: 70px; }
@@ -185,6 +232,18 @@ h1, h2, h3, p { margin-top: 0; }
   .project-card h3 { font-size: 20px; }
   .project-card > p { font-size: 12px; }
   .project-features { gap: 8px 10px; }
+  .project-carousel { margin-top: 16px; padding-top: 14px; }
+  .carousel-container { height: 160px; }
+  .mockup-dashboard { padding: 10px; font-size: 9px; }
+  .mockup-stat { padding: 4px 0; }
+  .mockup-label { font-size: 9px; }
+  .mockup-value { font-size: 14px; }
+  .ui-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+  .ui-card-preview { height: 140px; }
+  .ui-preview-placeholder svg { width: 36px; height: 36px; }
+  .ui-card-content { padding: 16px; }
+  .ui-card-content h3 { font-size: 16px; margin-bottom: 6px; }
+  .ui-card-content > p { font-size: 11px; margin-bottom: 12px; }
   .contact-inner { padding-block: 57px 22px; }
   .contact-main { grid-template-columns: 1fr; gap: 29px; padding-block: 39px 47px; }
   .contact-main h2 { font-size: clamp(53px, 14vw, 75px); }
