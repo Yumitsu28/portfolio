@@ -17,6 +17,40 @@ siteNav?.querySelectorAll("a").forEach((link) => {
 const currentYear = document.querySelector("#current-year");
 if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
+// Lightbox functionality
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.querySelector(".lightbox-image");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+document.querySelectorAll(".carousel-image").forEach((img) => {
+  img.addEventListener("click", () => {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+lightboxClose?.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "auto";
+});
+
+lightbox?.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+});
+
+// Escape key to close lightbox
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox.classList.contains("active")) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+});
+
 // Carousel functionality
 document.querySelectorAll(".project-carousel").forEach((carousel) => {
   const slides = carousel.querySelectorAll(".carousel-slide");

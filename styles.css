@@ -111,6 +111,7 @@ h1, h2, h3, p { margin-top: 0; }
 .carousel-container { position: relative; height: 220px; overflow: hidden; border-radius: 3px; }
 .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .4s ease-in-out; }
 .carousel-slide.active { opacity: 1; }
+.carousel-image { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
 .mockup-dashboard { width: 100%; height: 100%; display: flex; flex-direction: column; padding: 16px; color: rgba(255,255,255,0.95); font-size: 11px; }
 .mockup-header { margin-bottom: 14px; }
 .mockup-element { border-radius: 2px; }
@@ -162,6 +163,15 @@ h1, h2, h3, p { margin-top: 0; }
 .ui-card-content h3 { margin: 0 0 8px; font: 650 18px/1.2 var(--font-display); letter-spacing: -.04em; }
 .ui-card-content > p { margin: 0 0 15px; color: #777a72; font-size: 12px; line-height: 1.7; flex-grow: 1; }
 .ui-card-content .tag-list { margin-top: auto; }
+
+.lightbox-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 1000; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px; }
+.lightbox-modal.active { display: flex; opacity: 1; }
+.lightbox-image { max-width: 90vw; max-height: 90vh; width: auto; height: auto; object-fit: contain; border-radius: 4px; animation: slideIn 0.3s ease; }
+.lightbox-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border: none; background: rgba(255, 255, 255, 0.2); color: #fff; font-size: 24px; cursor: pointer; border-radius: 50%; transition: background 0.2s; display: flex; align-items: center; justify-content: center; padding: 0; }
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.3); }
+.carousel-image { cursor: pointer; }
+.carousel-image:hover { opacity: 0.9; }
+@keyframes slideIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 @keyframes blink { 50% { opacity: 0; } }
 @media (max-width: 900px) {
